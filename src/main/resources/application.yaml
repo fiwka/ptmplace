@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: ptmplace-backend
+  datasource:
+    url: jdbc:h2:file:${H2_DATABASE_LOCATION}

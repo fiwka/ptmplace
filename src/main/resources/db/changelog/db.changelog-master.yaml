@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Константин
+  - includeAll:
+      path: classpath*:db/changelog/2025/02
