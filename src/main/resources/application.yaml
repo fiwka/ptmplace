@@ -3,3 +3,13 @@ spring:
     name: ptmplace-backend
   datasource:
     url: jdbc:h2:file:${H2_DATABASE_LOCATION}
+
+server:
+  error:
+    include-message: always
+
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
+  expiration:
+    access: 50000
+    refresh: 600000
