@@ -4,9 +4,10 @@ import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import xyz.fiwka.ptmplace.security.Role;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -23,9 +24,16 @@ public class User implements UserDetails {
     private String email;
     private String password;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "roles",
+            joinColumns = @JoinColumn( name = "user_id"))
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles = Set.of(Role.MEMBER);
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return roles;
     }
 
     @Override
