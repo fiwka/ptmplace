@@ -38,4 +38,10 @@ public class UserServiceImpl implements UserService {
     public Optional<UserResponseDto> findUser(String email) {
         return userRepository.findByEmail(email).map(userMapper::toUserResponseDto);
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<UserResponseDto> findUser(Long id) {
+        return userRepository.findById(id).map(userMapper::toUserResponseDto);
+    }
 }

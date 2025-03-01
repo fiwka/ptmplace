@@ -9,4 +9,5 @@ public interface UserService {
 
     UserResponseDto createUser(UserFieldsRequest userFieldsRequest);
     Optional<UserResponseDto> findUser(String email);
+    Optional<UserResponseDto> findUser(Long id);
 }
