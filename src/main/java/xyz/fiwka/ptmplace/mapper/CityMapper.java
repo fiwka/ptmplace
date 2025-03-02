@@ -11,4 +11,5 @@ public interface CityMapper {
 
     CityResponse toCityResponseDto(City city);
     City toCity(CityRequest cityRequest);
+    City toCity(CityResponse cityResponse);
 }
