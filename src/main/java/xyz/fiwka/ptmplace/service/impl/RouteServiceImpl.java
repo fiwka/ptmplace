@@ -41,7 +41,7 @@ public class RouteServiceImpl implements RouteService {
         }
     }
 
-    public void dfs(City from, City to, List<Route> subList, List<List<Route>> routes, Set<Long> visited, TransportModeFilter filter, LocalDateTime departure) {
+    private void dfs(City from, City to, List<Route> subList, List<List<Route>> routes, Set<Long> visited, TransportModeFilter filter, LocalDateTime departure) {
         if (!graph.containsKey(from))
             return;
 
