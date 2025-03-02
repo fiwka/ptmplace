@@ -7,7 +7,7 @@ import xyz.fiwka.ptmplace.security.Role;
 import java.util.Set;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public record UserResponseDto(
+public record UserResponse(
         Long id,
         String lastName,
         String firstName,

@@ -1,8 +1,8 @@
 package xyz.fiwka.ptmplace.provider;
 
-import xyz.fiwka.ptmplace.dto.response.TokenResponseDto;
+import xyz.fiwka.ptmplace.dto.response.TokenResponse;
 
 public interface TokenProvider {
 
-    TokenResponseDto generateTokens(String email);
+    TokenResponse generateTokens(String email);
 }

@@ -8,7 +8,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 import xyz.fiwka.ptmplace.dto.request.AuthenticationRequest;
 import xyz.fiwka.ptmplace.dto.request.RefreshTokenRequest;
-import xyz.fiwka.ptmplace.dto.response.TokenResponseDto;
+import xyz.fiwka.ptmplace.dto.response.TokenResponse;
 import xyz.fiwka.ptmplace.exception.BadCredentialsException;
 import xyz.fiwka.ptmplace.exception.TokenInvalidException;
 import xyz.fiwka.ptmplace.provider.JwtTokenProvider;
@@ -26,7 +26,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final JwtUtil jwtUtil;
 
     @Override
-    public TokenResponseDto authenticate(AuthenticationRequest authenticationRequest) {
+    public TokenResponse authenticate(AuthenticationRequest authenticationRequest) {
         try {
             var user = userRepository.findByEmail(authenticationRequest.email())
                     .orElseThrow(() -> new BadCredentialsException("Bad credentials"));
@@ -43,7 +43,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public TokenResponseDto refresh(RefreshTokenRequest refreshTokenRequest) {
+    public TokenResponse refresh(RefreshTokenRequest refreshTokenRequest) {
         var refreshToken = refreshTokenRequest.refreshToken();
 
         if (!jwtUtil.isRefreshToken(refreshToken))

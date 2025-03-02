@@ -4,11 +4,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Component;
 import xyz.fiwka.ptmplace.configuration.JwtProperties;
-import xyz.fiwka.ptmplace.dto.response.TokenResponseDto;
+import xyz.fiwka.ptmplace.dto.response.TokenResponse;
 
 import java.security.Key;
 import java.util.Base64;
-import java.util.Collections;
 import java.util.Date;
 
 @Component
@@ -23,8 +22,8 @@ public class JwtTokenProvider implements TokenProvider {
     }
 
     @Override
-    public TokenResponseDto generateTokens(String email) {
-        return new TokenResponseDto(
+    public TokenResponse generateTokens(String email) {
+        return new TokenResponse(
                 createToken(email, jwtProperties.getAccessExpiration(), JwtProperties.ACCESS_PREFIX),
                 jwtProperties.getAccessExpiration(),
                 createToken(email, jwtProperties.getRefreshExpiration(), JwtProperties.REFRESH_PREFIX),

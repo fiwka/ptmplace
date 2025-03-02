@@ -1,13 +1,13 @@
 package xyz.fiwka.ptmplace.service;
 
 import xyz.fiwka.ptmplace.dto.request.UserFieldsRequest;
-import xyz.fiwka.ptmplace.dto.response.UserResponseDto;
+import xyz.fiwka.ptmplace.dto.response.UserResponse;
 
 import java.util.Optional;
 
 public interface UserService {
 
-    UserResponseDto createUser(UserFieldsRequest userFieldsRequest);
-    Optional<UserResponseDto> findUser(String email);
-    Optional<UserResponseDto> findUser(Long id);
+    UserResponse createUser(UserFieldsRequest userFieldsRequest);
+    Optional<UserResponse> findUser(String email);
+    Optional<UserResponse> findUser(Long id);
 }
