@@ -1,10 +1,10 @@
-import PTMPlaceNavbar from "./PTMPlaceNavbar.tsx";
+import {Button} from "flowbite-react"
 
 function App() {
   return (
-    <>
-      <PTMPlaceNavbar />
-    </>
+      <>
+          <Button>Click me</Button>
+      </>
   )
 }
 
