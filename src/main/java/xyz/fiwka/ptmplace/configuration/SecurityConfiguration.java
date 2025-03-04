@@ -13,9 +13,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import xyz.fiwka.ptmplace.filter.JwtTokenFilterConfigurer;
 import xyz.fiwka.ptmplace.handler.JwtAccessDeniedHandler;
 import xyz.fiwka.ptmplace.handler.JwtAuthenticationEntryPoint;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @RequiredArgsConstructor
@@ -27,6 +33,21 @@ public class SecurityConfiguration {
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
 
     @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        var corsConfiguration = new CorsConfiguration();
+
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173"));
+        corsConfiguration.setAllowedHeaders(List.of("*"));
+        corsConfiguration.setAllowedMethods(List.of("*"));
+
+        var source = new UrlBasedCorsConfigurationSource();
+
+        source.registerCorsConfiguration("/**", corsConfiguration);
+
+        return source;
+    }
+
+    @Bean
     public SecurityFilterChain jwtFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable);
         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
@@ -34,6 +55,8 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(auth -> auth
                 .anyRequest().permitAll()
         );
+
+        http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
 
         http.exceptionHandling(customizer -> customizer
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)
