@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import xyz.fiwka.ptmplace.dto.request.CityRequest;
 import xyz.fiwka.ptmplace.dto.response.CityResponse;
 import xyz.fiwka.ptmplace.exception.CityNotFoundException;
 import xyz.fiwka.ptmplace.service.CityService;
@@ -23,12 +21,6 @@ public class CityController {
     @GetMapping
     public ResponseEntity<Page<CityResponse>> listCities(Pageable pageable) {
         return ResponseEntity.ok(cityService.listCities(pageable));
-    }
-
-    @Secured("ADMIN")
-    @PostMapping
-    public ResponseEntity<CityResponse> addCity(@RequestBody CityRequest cityRequest) {
-        return ResponseEntity.ok(cityService.createCity(cityRequest));
     }
 
     @GetMapping("/{id}")

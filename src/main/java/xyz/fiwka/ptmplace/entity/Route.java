@@ -1,24 +1,23 @@
 package xyz.fiwka.ptmplace.entity;
 
-import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.data.neo4j.core.schema.*;
 
 import java.time.LocalDateTime;
 
 @Data
-@Entity
-@Table(name = "routes")
+@RelationshipProperties
+@AllArgsConstructor
 public class Route {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "routes_generator")
-    @SequenceGenerator(name="routes_generator", sequenceName = "routes_seq", allocationSize = 1)
+    @RelationshipId
     private Long id;
-    private TransportMode mode;
-    @ManyToOne
-    private City departureCity;
-    @ManyToOne
-    private City arrivalCity;
+
+    @TargetNode
+    private City city;
+
+    private TransportMode transportMode;
     private LocalDateTime departure;
     private LocalDateTime arrival;
 }
