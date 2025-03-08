@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface CityService {
 
     Page<CityResponse> listCities(Pageable pageable);
-    Optional<CityResponse> findCity(long id);
+    Optional<CityResponse> findCity(String name);
 }

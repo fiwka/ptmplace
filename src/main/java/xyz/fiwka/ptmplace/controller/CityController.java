@@ -26,9 +26,9 @@ public class CityController {
         return ResponseEntity.ok(cityService.listCities(pageable));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CityResponse> findCity(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(cityService.findCity(id)
-                .orElseThrow(() -> new CityNotFoundException("City with id " + id + " not found.")));
+    @GetMapping("/{name}")
+    public ResponseEntity<CityResponse> findCity(@PathVariable("name") String name) {
+        return ResponseEntity.ok(cityService.findCity(name)
+                .orElseThrow(() -> new CityNotFoundException("City with name " + name + " not found.")));
     }
 }

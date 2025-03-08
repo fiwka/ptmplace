@@ -1,6 +1,7 @@
 package xyz.fiwka.ptmplace.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,12 +20,14 @@ public class CityServiceImpl implements CityService {
     private final CityRepostiory cityRepostiory;
 
     @Override
+    @Cacheable("citesList")
     public Page<CityResponse> listCities(Pageable pageable) {
         return cityRepostiory.findAll(pageable).map(cityMapper::toCityResponseDto);
     }
 
     @Override
-    public Optional<CityResponse> findCity(long id) {
-        return cityRepostiory.findById(id).map(cityMapper::toCityResponseDto);
+    @Cacheable("cityByName")
+    public Optional<CityResponse> findCity(String name) {
+        return cityRepostiory.findByNameIgnoreCase(name).map(cityMapper::toCityResponseDto);
     }
 }
