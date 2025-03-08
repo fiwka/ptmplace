@@ -7,6 +7,8 @@ import {SignIn} from "./SignIn.tsx";
 import {ProtectedRoute} from "./ProtectedRoute.tsx";
 import {CustomFlowbiteTheme, Flowbite} from "flowbite-react";
 import {AnonymousRoute} from "./AnonymousRoute.tsx";
+import Cities from "./Cities.tsx";
+import RoutePage from "./RoutePage.tsx";
 
 const ptmplaceTheme: CustomFlowbiteTheme = {
     textarea: {
@@ -23,6 +25,12 @@ createRoot(document.getElementById('root')!).render(
               <Routes>
                   <Route path="/" element={<ProtectedRoute>
                       <App />
+                  </ProtectedRoute>} />
+                  <Route path="/cities" element={<ProtectedRoute>
+                      <Cities />
+                  </ProtectedRoute>} />
+                  <Route path="/route/:from/:to/:mode/:departure" element={<ProtectedRoute>
+                      <RoutePage />
                   </ProtectedRoute>} />
                   <Route path="/signin" element={<AnonymousRoute>
                       <SignIn />
