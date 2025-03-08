@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {Token, User} from "./user.tsx";
 import {callBackend} from "./ptmplace.tsx";
 import {useLocalStorage} from "@uidotdev/usehooks";
+import SearchForm from "./SearchForm.tsx";
 
 function App() {
     const [user, setUser] = useState({} as User)
@@ -29,7 +30,7 @@ function App() {
     return (
         <>
             <AppNavbar/>
-            <h1>{user.email}</h1>
+            <SearchForm/>
         </>
     )
 }

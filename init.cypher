@@ -9,3 +9,24 @@ create (c8: City {name: 'Санкт-Петербург'})
 
 match (c1), (c2) where c1.name = "Москва" and c2.name = "Пермь"
 create (c2)-[:HAVE_ROUTE_TO{transportMode:"PLANE",departure:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400))),arrival:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400 * 2)))}]->(c1)
+
+match (c1), (c2) where c1.name = "Москва" and c2.name = "Пермь"
+create (c2)-[:HAVE_ROUTE_TO{transportMode:"RAILWAY",departure:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400))),arrival:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400 * 2)))}]->(c1)
+
+match (c1), (c2) where c1.name = "Москва" and c2.name = "Пермь"
+create (c2)-[:HAVE_ROUTE_TO{transportMode:"BUS",departure:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400))),arrival:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400 * 2)))}]->(c1)
+
+match (c1), (c2) where c1.name = "Пермь" and c2.name = "Москва"
+create (c2)-[:HAVE_ROUTE_TO{transportMode:"PLANE",departure:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400))),arrival:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400 * 2)))}]->(c1)
+
+match (c1), (c2) where c1.name = "Пермь" and c2.name = "Москва"
+create (c2)-[:HAVE_ROUTE_TO{transportMode:"RAILWAY",departure:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400))),arrival:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400 * 2)))}]->(c1)
+
+match (c1), (c2) where c1.name = "Пермь" and c2.name = "Москва"
+create (c2)-[:HAVE_ROUTE_TO{transportMode:"BUS",departure:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400))),arrival:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400 * 2)))}]->(c1)
+
+match (c1), (c2) where c1.name = "Пермь" and c2.name = "Екатеринбург"
+create (c2)-[:HAVE_ROUTE_TO{transportMode:"RAILWAY",departure:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400))),arrival:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400 * 2)))}]->(c1)
+
+match (c1), (c2) where c1.name = "Екатеринбург" and c2.name = "Пермь"
+create (c2)-[:HAVE_ROUTE_TO{transportMode:"RAILWAY",departure:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400))),arrival:localdatetime(datetime.fromepochmillis(timestamp() + (1000 * 86400 * 2)))}]->(c1)

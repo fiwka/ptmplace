@@ -13,7 +13,7 @@ const ptmplaceTheme: CustomFlowbiteTheme = {
         colors: {
             gray: "dark:bg-gray-900 dark:text-white",
         }
-    },
+    }
 }
 
 createRoot(document.getElementById('root')!).render(

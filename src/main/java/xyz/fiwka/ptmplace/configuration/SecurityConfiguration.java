@@ -20,7 +20,6 @@ import xyz.fiwka.ptmplace.filter.JwtTokenFilterConfigurer;
 import xyz.fiwka.ptmplace.handler.JwtAccessDeniedHandler;
 import xyz.fiwka.ptmplace.handler.JwtAuthenticationEntryPoint;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration

@@ -19,7 +19,6 @@ export default function AppNavbar() {
                 <Navbar.Link href="#">
                     Мои билеты
                 </Navbar.Link>
-                <Navbar.Link href="#">Маршруты</Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     )
