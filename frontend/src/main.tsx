@@ -9,6 +9,7 @@ import {CustomFlowbiteTheme, Flowbite} from "flowbite-react";
 import {AnonymousRoute} from "./AnonymousRoute.tsx";
 import Cities from "./Cities.tsx";
 import RoutePage from "./RoutePage.tsx";
+import Register from "./Register.tsx";
 
 const ptmplaceTheme: CustomFlowbiteTheme = {
     textarea: {
@@ -34,6 +35,9 @@ createRoot(document.getElementById('root')!).render(
                   </ProtectedRoute>} />
                   <Route path="/signin" element={<AnonymousRoute>
                       <SignIn />
+                  </AnonymousRoute>} />
+                  <Route path="/register" element={<AnonymousRoute>
+                      <Register />
                   </AnonymousRoute>} />
               </Routes>
           </BrowserRouter>

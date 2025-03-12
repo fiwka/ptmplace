@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Length;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record UserFieldsRequest(
@@ -19,6 +20,7 @@ public record UserFieldsRequest(
         @NotBlank(message = "Email cannot be blank.")
         String email,
         @NotBlank(message = "Password cannot be blank.")
+        @Length(min = 8)
         String password
 ) {
 }
