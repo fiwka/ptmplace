@@ -21,3 +21,7 @@ jwt:
   expiration:
     access: 86400000
     refresh: 604800000
+
+ptmplace:
+  security:
+    frontend-url: ${FRONTEND_URL}
