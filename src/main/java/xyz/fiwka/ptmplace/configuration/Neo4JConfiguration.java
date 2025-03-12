@@ -21,9 +21,9 @@ public class Neo4JConfiguration {
                 .build();
     }
 
-    @Bean("neo4jTransactionManager")
-    public Neo4jTransactionManager transactionManager(Driver driver, DatabaseSelectionProvider databaseNameProvider,
-                                                      ObjectProvider<TransactionManagerCustomizers> optionalCustomizers) {
+    @Bean
+    public Neo4jTransactionManager neo4jTransactionManager(Driver driver, DatabaseSelectionProvider databaseNameProvider,
+                                                           ObjectProvider<TransactionManagerCustomizers> optionalCustomizers) {
         Neo4jTransactionManager transactionManager = new Neo4jTransactionManager(driver, databaseNameProvider);
         optionalCustomizers.ifAvailable((customizer) -> customizer.customize(transactionManager));
         return transactionManager;
