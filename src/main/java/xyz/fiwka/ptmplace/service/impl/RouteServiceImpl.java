@@ -4,13 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import xyz.fiwka.ptmplace.dto.request.TransportModeFilter;
-import xyz.fiwka.ptmplace.dto.response.CityResponse;
-import xyz.fiwka.ptmplace.entity.City;
 import xyz.fiwka.ptmplace.entity.Path;
-import xyz.fiwka.ptmplace.entity.TransportMode;
 import xyz.fiwka.ptmplace.exception.CityNotFoundException;
-import xyz.fiwka.ptmplace.mapper.CityMapper;
 import xyz.fiwka.ptmplace.repository.CityRepostiory;
+import xyz.fiwka.ptmplace.repository.RouteRepository;
 import xyz.fiwka.ptmplace.service.RouteService;
 
 import java.time.LocalDateTime;
@@ -21,7 +18,7 @@ import java.util.List;
 public class RouteServiceImpl implements RouteService {
 
     private final CityRepostiory cityRepostiory;
-    private final CityMapper cityMapper;
+    private final RouteRepository routeRepository;
 
     @Override
     @Cacheable("routes")

@@ -4,12 +4,10 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import xyz.fiwka.ptmplace.entity.City;
 import xyz.fiwka.ptmplace.entity.Path;
-import xyz.fiwka.ptmplace.entity.Route;
 import xyz.fiwka.ptmplace.entity.TransportMode;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public interface CityRepostiory extends Neo4jRepository<City, Long> {
@@ -23,6 +21,7 @@ public interface CityRepostiory extends Neo4jRepository<City, Long> {
             UNWIND range(0, size(nodes(s)) - 1) AS idx
             RETURN
                 nodes(s)[idx] AS city,
+                (CASE WHEN idx > 0 THEN r[idx-1] ELSE r[0] END).id as rid,
                 (CASE WHEN idx > 0 THEN r[idx-1] ELSE r[0] END).arrival as arrival,
                 (CASE WHEN idx > 0 THEN r[idx-1] ELSE r[0] END).departure as departure,
                 (CASE WHEN idx > 0 THEN r[idx-1] ELSE r[0] END).transportMode as transportMode
@@ -38,6 +37,7 @@ public interface CityRepostiory extends Neo4jRepository<City, Long> {
             UNWIND range(0, size(nodes(s)) - 1) AS idx
             RETURN
                 nodes(s)[idx] AS city,
+                (CASE WHEN idx > 0 THEN r[idx-1] ELSE r[0] END).id as rid,
                 (CASE WHEN idx > 0 THEN r[idx-1] ELSE r[0] END).arrival as arrival,
                 (CASE WHEN idx > 0 THEN r[idx-1] ELSE r[0] END).departure as departure,
                 (CASE WHEN idx > 0 THEN r[idx-1] ELSE r[0] END).transportMode as transportMode

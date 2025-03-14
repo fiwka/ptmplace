@@ -1,6 +1,6 @@
-import {FormEvent, useCallback, useState} from "react";
+import {FormEvent, useCallback} from "react";
 import {useNavigate} from "react-router";
-import {Button, Label, TextInput, Toast} from "flowbite-react";
+import {Button, Label, TextInput} from "flowbite-react";
 import {callBackendNoToken} from "./ptmplace.tsx";
 
 export default function Register() {

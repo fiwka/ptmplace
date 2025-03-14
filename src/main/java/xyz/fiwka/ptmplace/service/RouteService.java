@@ -1,7 +1,6 @@
 package xyz.fiwka.ptmplace.service;
 
 import xyz.fiwka.ptmplace.dto.request.TransportModeFilter;
-import xyz.fiwka.ptmplace.dto.response.CityResponse;
 import xyz.fiwka.ptmplace.entity.Path;
 
 import java.time.LocalDateTime;

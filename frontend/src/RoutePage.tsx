@@ -4,14 +4,35 @@ import {useLocalStorage} from "@uidotdev/usehooks";
 import {Token} from "./user.tsx";
 import {Button, Card} from "flowbite-react";
 import {FaArrowRight, FaBus, FaPlane, FaTrain} from "react-icons/fa";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {callBackend} from "./ptmplace.tsx";
 
 export default function RoutePage() {
     const {from, to, mode, departure} = useParams()
     const [accessToken, _] = useLocalStorage('access_token', {} as Token)
     const [route, setRoute] = useState(null as unknown as any[])
+    const [routeIds, setRouteIds] = useState([] as number[])
     const [isRouteSet, setIsRouteSet] = useState(false)
+    const cb = useCallback(() => {
+        callBackend('ticket', accessToken.token, {
+            method: 'POST',
+            body: JSON.stringify({
+                route_ids: routeIds
+            }),
+            headers: {
+                Authorization: `Bearer ${accessToken.token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    alert("Произошла ошибка при бронировании билетов!")
+                    throw "error"
+                }
+
+                alert("Билеты успешно забронированы!")
+            })
+    }, [routeIds, accessToken])
 
     useEffect(() => {
         if (!isRouteSet) {
@@ -24,10 +45,12 @@ export default function RoutePage() {
                 .then(res => res.json())
                 .then(res => {
                     const routes = []
+                    const routeIds2 = []
 
                     for (let i = 0; i < res.length; i++) {
                         const arrival = i != res.length - 1 ? new Date(res[i + 1].arrival) : null
                         const departure = i != res.length - 1 ? new Date(res[i + 1].departure) : null
+                        const id = i != res.length - 1 ? res[i + 1].id : null
 
                         routes.push(
                             <div key={i} className="flex flex-row gap-2 items-center">
@@ -50,10 +73,13 @@ export default function RoutePage() {
                                     </div>
                                 </div>
                             )
+
+                            routeIds2.push(id)
                         }
                     }
 
                     setRoute(routes)
+                    setRouteIds(routeIds2)
                 })
 
             setIsRouteSet(true)
@@ -70,7 +96,7 @@ export default function RoutePage() {
                         <div className="flex flex-row gap-4 items-center">
                             {route}
                         </div>
-                        <Button>Забронировать билет</Button>
+                        <Button onClick={cb}>Забронировать билет</Button>
                     </Card> : null
             }
         </div>

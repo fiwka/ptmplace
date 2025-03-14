@@ -33,6 +33,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3001:80"
+      - "3002:3001"
     networks:
       - ptmplace-net
   neo4j:
@@ -58,3 +59,4 @@ services:
     volumes:
       - "./neo4j-data:/data"
       - "./neo4j-logs:/logs"
+      - "./neo4j-plugins:/var/lib/neo4j/plugins"

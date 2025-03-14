@@ -1,5 +1,5 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import {StrictMode} from 'react'
+import {createRoot} from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import {BrowserRouter, Route, Routes} from "react-router";
@@ -10,6 +10,7 @@ import {AnonymousRoute} from "./AnonymousRoute.tsx";
 import Cities from "./Cities.tsx";
 import RoutePage from "./RoutePage.tsx";
 import Register from "./Register.tsx";
+import Tickets from "./Tickets.tsx";
 
 const ptmplaceTheme: CustomFlowbiteTheme = {
     textarea: {
@@ -29,6 +30,9 @@ createRoot(document.getElementById('root')!).render(
                   </ProtectedRoute>} />
                   <Route path="/cities" element={<ProtectedRoute>
                       <Cities />
+                  </ProtectedRoute>} />
+                  <Route path="/tickets" element={<ProtectedRoute>
+                      <Tickets />
                   </ProtectedRoute>} />
                   <Route path="/route/:from/:to/:mode/:departure" element={<ProtectedRoute>
                       <RoutePage />

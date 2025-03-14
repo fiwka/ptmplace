@@ -1,4 +1,4 @@
-import { useLocalStorage } from "@uidotdev/usehooks";
+import {useLocalStorage} from "@uidotdev/usehooks";
 import {Navigate} from "react-router";
 import {Token} from "./user.tsx";
 

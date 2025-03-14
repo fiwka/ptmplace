@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import xyz.fiwka.ptmplace.dto.request.TransportModeFilter;
-import xyz.fiwka.ptmplace.dto.response.CityResponse;
 import xyz.fiwka.ptmplace.entity.Path;
 import xyz.fiwka.ptmplace.service.RouteService;
 

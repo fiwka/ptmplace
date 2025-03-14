@@ -10,5 +10,6 @@ import xyz.fiwka.ptmplace.entity.User;
 public interface UserMapper {
 
     User toUser(UserFieldsRequest userFieldsRequest);
+    User toUser(UserResponse userResponse);
     UserResponse toUserResponseDto(User user);
 }
