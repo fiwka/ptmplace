@@ -23,11 +23,9 @@ import java.util.Base64;
 public class JwtUtil {
 
     private final Key key;
-    private final JwtProperties jwtProperties;
     private final UserDetailsService userDetailsService;
 
     public JwtUtil(JwtProperties jwtProperties, UserDetailsService userDetailsService) {
-        this.jwtProperties = jwtProperties;
         this.userDetailsService = userDetailsService;
         this.key = Keys.hmacShaKeyFor(Base64.getDecoder().decode(jwtProperties.secretKey().getBytes()));
     }
