@@ -13,7 +13,8 @@ import xyz.fiwka.ptmplace.mapper.UserMapperImpl;
 import xyz.fiwka.ptmplace.service.UserService;
 import xyz.fiwka.ptmplace.service.impl.UserServiceImpl;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DataJpaTest
 @Import({UserServiceImpl.class, UserMapperImpl.class})

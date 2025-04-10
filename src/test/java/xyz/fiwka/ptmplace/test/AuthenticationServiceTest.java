@@ -24,7 +24,8 @@ import xyz.fiwka.ptmplace.service.impl.PtmplaceUserDetailsService;
 import xyz.fiwka.ptmplace.service.impl.UserServiceImpl;
 import xyz.fiwka.ptmplace.util.JwtUtil;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 @DataJpaTest
 @EnableConfigurationProperties(JwtProperties.class)

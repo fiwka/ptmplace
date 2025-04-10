@@ -1,12 +1,5 @@
 package xyz.fiwka.ptmplace.test;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,6 +12,15 @@ import xyz.fiwka.ptmplace.entity.TransportMode;
 import xyz.fiwka.ptmplace.exception.CityNotFoundException;
 import xyz.fiwka.ptmplace.repository.CityRepostiory;
 import xyz.fiwka.ptmplace.service.impl.RouteServiceImpl;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class RouteServiceTest {

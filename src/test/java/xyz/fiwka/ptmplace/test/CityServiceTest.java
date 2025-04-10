@@ -15,7 +15,7 @@ import xyz.fiwka.ptmplace.mapper.CityMapperImpl;
 import xyz.fiwka.ptmplace.service.CityService;
 import xyz.fiwka.ptmplace.service.impl.CityServiceImpl;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataNeo4jTest
 @Import({CityServiceImpl.class, CityMapperImpl.class})
