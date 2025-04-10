@@ -6,6 +6,10 @@
 
 ```./gradlew build```
 
+Можно собрать без запуска тестов:
+
+```./gradlew build -x test```
+
 Затем запустить с помощью docker compose:
 
 ```docker compose up --build```

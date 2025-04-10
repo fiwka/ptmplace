@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import xyz.fiwka.ptmplace.dto.request.UserFieldsRequest;
+import xyz.fiwka.ptmplace.exception.UserAlreadyExistsException;
 import xyz.fiwka.ptmplace.mapper.UserMapperImpl;
 import xyz.fiwka.ptmplace.service.UserService;
 import xyz.fiwka.ptmplace.service.impl.UserServiceImpl;
@@ -63,5 +64,47 @@ public class UserServiceTest {
 
         assertThat(result.orElseGet(Assertions::fail).email())
                 .isEqualTo(email);
+    }
+
+    @Test
+    public void whenFindExistingUserById_thenReturnExistingUserResponse() {
+        var email = "test@example.com";
+        var userFields = new UserFieldsRequest(
+                "Ivanov",
+                "Ivan",
+                "79000000000",
+                email,
+                "12345678"
+        );
+
+        var user = userService.createUser(userFields);
+
+        var result = userService.findUser(user.id());
+
+        assertThat(result.orElseGet(Assertions::fail).email())
+                .isEqualTo(email);
+    }
+
+    @Test
+    public void whenCreateUserConflictEmail_thenThrowsUserAlreadyExistsException() {
+        var userFields = new UserFieldsRequest(
+                "Ivanov",
+                "Ivan",
+                "79000000000",
+                "mew@example.com",
+                "12345678"
+        );
+        var userFields2 = new UserFieldsRequest(
+                "Ivanov",
+                "Ivan",
+                "79000000000",
+                "mew@example.com",
+                "12345678"
+        );
+
+        userService.createUser(userFields);
+
+        assertThatExceptionOfType(UserAlreadyExistsException.class)
+                .isThrownBy(() -> userService.createUser(userFields2));
     }
 }
