@@ -7,7 +7,6 @@ import xyz.fiwka.ptmplace.dto.request.TransportModeFilter;
 import xyz.fiwka.ptmplace.entity.Path;
 import xyz.fiwka.ptmplace.exception.CityNotFoundException;
 import xyz.fiwka.ptmplace.repository.CityRepostiory;
-import xyz.fiwka.ptmplace.repository.RouteRepository;
 import xyz.fiwka.ptmplace.service.RouteService;
 
 import java.time.LocalDateTime;
@@ -18,7 +17,6 @@ import java.util.List;
 public class RouteServiceImpl implements RouteService {
 
     private final CityRepostiory cityRepostiory;
-    private final RouteRepository routeRepository;
 
     @Override
     @Cacheable("routes")
